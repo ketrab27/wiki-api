@@ -6,14 +6,14 @@
             <div class="paragraph fs-body-1 mt+">
                 <p>
                     <lx-search-filter lx-width="800" lx-color="white" lx-theme="dark" lx-closed="true">
-                        <input type="text" ng-model="searchValue" ng-keyup="$event.keyCode == 13 && searchApi(searchValue)" ng-change="apiPrompt(searchValue);" placeholder="Szukaj hasła">
+                        <input type="text" ng-model="searchValue" ng-keyup="$event.keyCode == 13 && searchApi(searchValue)" ng-focus="togglePrompt(true)" ng-blur="togglePrompt(false)" ng-change="apiPrompt(searchValue);" placeholder="Szukaj hasła">
                     </lx-search-filter>
                 </p>
             </div>
-            <div class="prompt helper">
+            <div class="prompt helper" ng-if="showPrompt">
                 <div class="dropdown-menu-abolute ng-scope dropdown-menu--depth-1 dropdown-menu--is-open" style="">
                     <ul class="ng-scope">
-                        <li ng-repeat="prompt in prompts"><a class="dropdown-link" ng-click="goToPage(prompt.pageid)">{{prompt.title}}</a></li>
+                        <li ng-repeat="prompt in prompts" ng-click="goToPage(prompt.pageid)"><a class="dropdown-link">{{prompt.title}}</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,17 +1,18 @@
 'use strict';
 
-angular.module('SiiApp').controller('DetailsCtrl', function(Webservice, $scope, $http, $stateParams, $state) {
+angular.module('WikiApp').controller('DetailsCtrl', function(Webservice, $scope, $http, $stateParams, $state) {
 
     $scope.title = '';
     $scope.content = '';
     $scope.pageId = $stateParams.pageId;
 
+    // Redirect to home page on clicking btn
     $scope.backToHome = function () {
         $state.go('home')
     };
 
+    // Get data from api, by query parameter
     $scope.searchApi = function (pageId) {
-
         $http.jsonp(Webservice, {
             method: 'GET',
             params: {
@@ -28,5 +29,6 @@ angular.module('SiiApp').controller('DetailsCtrl', function(Webservice, $scope, 
         });
     };
 
+    // Call up the search function
     $scope.searchApi($scope.pageId);
 });

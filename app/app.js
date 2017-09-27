@@ -1,4 +1,4 @@
-var SiiApp = angular.module("SiiApp", [
+var WikiApp = angular.module("WikiApp", [
     "lumx",
     "ngAnimate",
     "ui.router",
@@ -6,7 +6,8 @@ var SiiApp = angular.module("SiiApp", [
     "LocalStorageModule"
 ]);
 
-SiiApp.factory('settings', ['$rootScope', function ($rootScope) {
+// Set app variable settings
+WikiApp.factory('settings', ['$rootScope', function ($rootScope) {
     var settings = {
         layout: {
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
@@ -17,22 +18,25 @@ SiiApp.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
-SiiApp.config(function($sceDelegateProvider, localStorageServiceProvider) {
+// Allow downloading data from external resources and configurate local storage
+WikiApp.config(function($sceDelegateProvider, localStorageServiceProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
         'self',
         'https://pl*.wikipedia.org/**'
     ]);
 
     localStorageServiceProvider
-        .setPrefix('SiiApp')
+        .setPrefix('WikiApp')
         .setStorageType('sessionStorage');
 });
 
-SiiApp.factory('Webservice', function () {
+// Set global constant value
+WikiApp.factory('Webservice', function () {
     return 'https://pl.wikipedia.org/w/api.php';
 });
 
-SiiApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+// Application routing
+WikiApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
         // Redirect any unmatched url
         $urlRouterProvider.otherwise("/");
 
@@ -54,7 +58,8 @@ SiiApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', func
                 })
     }]);
 
-SiiApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
+// Bind default variables to the view
+WikiApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state;
     $rootScope.currentDate = new Date();
 }]);

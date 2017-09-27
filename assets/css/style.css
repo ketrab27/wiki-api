@@ -1,0 +1,22 @@
+a{
+  text-decoration: none;
+  color: #161616;
+}
+.infobox{
+  float: right;
+  margin-left: 50px;
+  max-width: 350px;
+}
+.dropdown-menu-abolute{
+  position: absolute;
+  background: #FFF;
+  z-index: 1002;
+  width: auto;
+  left: 85px;
+  right: auto;
+  top: 220px;
+  height: auto;
+  opacity: 1;
+  overflow: auto;
+  bottom: auto;
+}

@@ -1,0 +1,36 @@
+<div class="p+">
+    <div class="card">
+        <div class="p+ bgc-indigo-900 tc-white-1">
+            <strong class="fs-headline display-block">Szukaj w wiki</strong>
+
+            <div class="paragraph fs-body-1 mt+">
+                <p>
+                    <lx-search-filter lx-width="800" lx-color="white" lx-theme="dark" lx-closed="true">
+                        <input type="text" ng-model="searchValue" ng-keyup="$event.keyCode == 13 && searchApi(searchValue)" ng-change="apiPrompt(searchValue);" placeholder="Szukaj hasła">
+                    </lx-search-filter>
+                </p>
+            </div>
+            <div class="prompt helper">
+                <div class="dropdown-menu-abolute ng-scope dropdown-menu--depth-1 dropdown-menu--is-open" style="">
+                    <ul class="ng-scope">
+                        <li ng-repeat="prompt in prompts"><a class="dropdown-link" ng-click="goToPage(prompt.pageid)">{{prompt.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p+" ng-repeat="result in results">
+    <div class="card">
+        <a ui-sref="details({'pageId':result.pageid})">
+            <div class="p+">
+                <strong class="fs-headline display-block">{{result.title}}</strong>
+
+                <div class="paragraph fs-body-1 mt+">
+                    <p ng-bind-html="result.snippet"></p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

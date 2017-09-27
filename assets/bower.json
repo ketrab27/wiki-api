@@ -1,0 +1,30 @@
+{
+  "name": "wiki api",
+  "authors": [
+    "ketrab27@gmail.com"
+  ],
+  "description": "An NG1 application that retrieves data from wiki api",
+  "main": "index.html",
+  "keywords": [
+    "wikipedia",
+    "api",
+    "angularjs",
+    "lumx"
+  ],
+  "license": "MIT",
+  "homepage": "-",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.6.6",
+    "angular-sanitize": "^1.6.6",
+    "angular-ui-router": "0.4.2",
+    "angular-local-storage": "^0.7.1",
+    "lumx": "^1.5.31"
+  }
+}
